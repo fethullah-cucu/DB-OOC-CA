@@ -9,14 +9,15 @@ package db.ooc.ca;
  * @author canif
  */
 public class DBOOCCA {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        System.out.println("HELLO WORLD!!!");
-        System.out.println("hello from feto");
-        System.out.println("hello feto agin ");
-    }
+    double tax;
+    Customer c1 = new Customer("feto",12345,60000);
+        tax = c1.calculateTax(30000);
+        
+        System.out.println(tax);
     
+    
+    
+    }
 }
+
