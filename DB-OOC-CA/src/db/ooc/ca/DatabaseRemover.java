@@ -27,7 +27,7 @@ public class DatabaseRemover extends Database{
         ){
         ResultSet results = stmt.executeQuery(String.format("DELETE * FROM %s "
                 + "WHERE customer_id = " + userID + ";", TABLE_NAME));
-    
+    //I am trying something new
     }
     
     
