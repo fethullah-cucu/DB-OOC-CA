@@ -15,12 +15,8 @@ import java.util.ArrayList;
  * @author zhiya
  */
 
-public class DatabaseReader {
-    private static final String DB_URL = "your_database_url";
-    private static final String USER = "your_database_user";
-    private static final String PASSWORD = "your_database_password";
-    private static final String TABLE_NAME = "your_table_name";
-
+public class DatabaseReader extends Database{
+    
     public ArrayList<Customer> getAllData() {
         ArrayList<Customer> customerList = new ArrayList<>();
 
@@ -30,13 +26,21 @@ public class DatabaseReader {
         ) {
             ResultSet results = stmt.executeQuery(String.format("SELECT * FROM %s;", TABLE_NAME));
 
-            // Iterate through the result set and create Customer objects
+            // Iterate through the result set and crea
+
+            // Iteratete Customer objects
             while (results.next()) {
                 int id = results.getInt("id");
                 String name = results.getString("name");
-
+                int phone = results.getInt("phone");
+                int gross = results.getInt("gross");
+                int taxOwned = results.getInt("taxowned");
+                
+                
+                
+                
                 // Assuming Customer has a constructor that takes id and name as parameters
-                Customer customer = new Customer(id, name);
+                Customer customer = new Customer(id,name,phone,gross,taxOwned);
                 
                 // Add the customer to the list
                 customerList.add(customer);
@@ -50,14 +54,5 @@ public class DatabaseReader {
         return customerList;
     }
 
-    // Assuming Customer class has a constructor like this
-    private static class Customer {
-        private int id;
-        private String name;
-
-        public Customer(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-    }
+    
 }
