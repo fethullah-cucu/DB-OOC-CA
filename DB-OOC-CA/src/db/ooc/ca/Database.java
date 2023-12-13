@@ -16,5 +16,4 @@ public abstract class Database {
     protected final static String TABLE_NAME = "TaxCalculater";
     // jdbc:mysql://localhost/Tax
     protected final static String DB_URL = DB_BASE_URL + "/" + DB_NAME;
-    //protected final static String COLUMN_NAME = null;
 }

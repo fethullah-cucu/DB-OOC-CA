@@ -11,20 +11,23 @@ import java.util.Scanner;
  * @author zhiya
  */
 public class Customer {
+    String name;
     private int customerID;
-    private  String name;
+    private int currentID = 1;
     private int phone;
     private int gross;
+    private int taxRate;
     private double taxOwned;
-    // AUTO SONRASIprivate int currentID = 1;
         //         customer enter his name,phone,grass income
     public Customer(String name, int phone, int gross) {
-        // AUTO SONRASI customerID = currentID;
+        customerID = currentID;
         this.name = name;
         this.phone = phone;
         this.gross = gross;
-        //AUTO SONRASIcurrentID++;
-
+        currentID++;
+       
+        
+        
         //you are assign grass income into purchaseAmount. if user enter 70.000$ , gross equal to 70.000 and 
         //purchaseAmount will equal to 70.000 as well
         double purchaseAmount = gross;
@@ -32,7 +35,12 @@ public class Customer {
         
         //change the ownedTax according to gross income (purchaseAmount)
         taxOwnedCalculator(purchaseAmount);
+        
+        
+       
 
+        
+        
         // you are calculating how much customer will paid according to his salary and his tax rate.
         double taxAmount = calculateTax(purchaseAmount);
         
@@ -50,25 +58,6 @@ public class Customer {
 
 
     }  
-    
-    public Customer(int id,String name, int phone, int gross,double taxOwned) {
-        id = this.customerID;
-        name = this.name;
-        phone = this.phone;
-        gross = this.gross;
-        taxOwned = this.taxOwned;
-                
-            
-    
-    
-    
-    }
-    
-    
-    
-    
-    
-    
     
 private void taxOwnedCalculator(double purchaseAmount) {
     if (purchaseAmount > 50000) {
@@ -96,50 +85,6 @@ private void taxOwnedCalculator(double purchaseAmount) {
         
      
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public int getGross() {
-        return gross;
-    }
-
-    public void setGross(int gross) {
-        this.gross = gross;
-    }
-
-    public double getTaxOwned() {
-        return taxOwned;
-    }
-
-    public void setTaxOwned(double taxOwned) {
-        this.taxOwned = taxOwned;
-    }
-    
-    
-    
-    
     
     
 }
