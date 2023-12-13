@@ -4,18 +4,26 @@
  */
 package db.ooc.ca;
 
+import java.sql.SQLException;
+import java.util.Scanner;
+
 /**
  *
  * @author canif
  */
 public class DBOOCCA {
-    public static void main(String[] args) {
-    double tax;
-    Customer c1 = new Customer("feto",12345,60000);
-        tax = c1.calculateTax(30000);
-        
-        System.out.println(tax);
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
     
+    DatabaseSetup db = new DatabaseSetup();
+    
+    DatabaseSetup.databaseSetup();
+        
+         //Scanner input = new Scanner(System.in);
+         //System.out.println("which type of user are you ? \n 1-Admin \n2-Regular");
+         //int userChoise = input.nextInt();
+
+        //UserType user = new UserType(userChoise);
+        
     
     
     }

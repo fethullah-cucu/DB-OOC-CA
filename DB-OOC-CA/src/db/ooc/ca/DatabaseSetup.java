@@ -18,22 +18,34 @@ import java.sql.SQLException;
  * @author canif
  */
 public class DatabaseSetup extends Database{
-   public static boolean setupDB() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    
+    
+ 
+    
+   public static boolean databaseSetup() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        System.out.println("Connecting to database...");
+
         try(
                 Connection conn = DriverManager.getConnection(DB_BASE_URL, USER, PASSWORD);
+                
+
                 Statement stmt = conn.createStatement();
             ){
+            System.out.println("try worked.");
+            
             stmt.execute("CREATE DATABASE IF NOT EXISTS " + DB_NAME + ";");
             stmt.execute("USE " + DB_NAME + ";");
             String sql = 
                     "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
-                    + "id INT(10)"
+                    + "id INT(10) PRIMARY KEY AUTO_INCREMENT ,"
                     + "name VARCHAR(255),"
-                    + "phone ),"
-                    + "gross INT(10),"      
+                    + "phone INT(10),"
+                    + "gross INT(10),"
+                    + "taxowned INT(10)"    
                     + ");";
             stmt.execute(sql);
+            System.out.println("Table created successfully.");
             return true;
         } catch (Exception e) {
             e.printStackTrace();
