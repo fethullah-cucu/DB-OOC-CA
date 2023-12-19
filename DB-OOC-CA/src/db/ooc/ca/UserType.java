@@ -160,7 +160,7 @@ public class UserType { //class starts.
                         String userPassword = input.nextLine();
                         
                         
-                        userTypeCheck();
+                        userTypeCheck(userID,userPassword);
                         
                         
                         System.out.println("what is the column name you want to change?");
@@ -263,6 +263,42 @@ public class UserType { //class starts.
                 exit2= true;
                     }
                 } 
+    private boolean exit3 = false;
+    public void userTypeCheck(int customerIDCheck,String customerPasswordCheck){
+    
+            
+            System.out.println("2. if worked");
+                while(!exit3){
+            
+                
+                    DatabaseReader databaseReader = new DatabaseReader();
+                    
+                for (Customer customer : databaseReader.getAllData()){
+                                if (customer.getCustomerID() == customerIDCheck && customer.getCustomerPassword() == customerPasswordCheck){
+                                    
+                                    exit3=true;
+                                }else{
+                                    System.out.println("password or id is wrong. try again.");
+                                    System.out.println("wanna go to main menu? if yes, write 'yes'");
+                                        String adminNameCheck = input.nextLine();
+                
+                                    if(adminNameCheck.equals("yes")){
+                                            UserType();
+                                            }else{
+                                        continue;
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                }
+                            }
+                        }
+                exit3= true;
+                    }
+    
+    
+    
             }
     
     
