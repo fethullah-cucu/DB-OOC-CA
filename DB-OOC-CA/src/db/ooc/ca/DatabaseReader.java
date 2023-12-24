@@ -50,8 +50,10 @@ public class DatabaseReader extends Database{
             e.printStackTrace();
         }
 
-        // Return the list of customers
-        return customerList;
+        
+        
+        return customerList; 
+
     }
 
     

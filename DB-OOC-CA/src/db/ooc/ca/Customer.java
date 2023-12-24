@@ -16,24 +16,26 @@ public class Customer {
     private int phone;
     private int gross;
     private double taxOwned;
-    // AUTO SONRASIprivate int currentID = 1;
-        //         customer enter his name,phone,grass income
-    public Customer(String name, int phone, int gross) {
-        // AUTO SONRASI customerID = currentID;
+
+    private String customerPassword;
+    
+    public Customer(String name, int phone, int gross,String customerPassword) {
+        
         this.name = name;
         this.phone = phone;
         this.gross = gross;
-        //AUTO SONRASIcurrentID++;
+        this.customerPassword = customerPassword;
+        
 
-        //you are assign grass income into purchaseAmount. if user enter 70.000$ , gross equal to 70.000 and 
-        //purchaseAmount will equal to 70.000 as well
+
+       
         double purchaseAmount = gross;
 
         
-        //change the ownedTax according to gross income (purchaseAmount)
+        
         taxOwnedCalculator(purchaseAmount);
 
-        // you are calculating how much customer will paid according to his salary and his tax rate.
+        
         double taxAmount = calculateTax(purchaseAmount);
         
         
@@ -43,9 +45,9 @@ public class Customer {
        
        
        if (taxOwned<0 ){
-           System.out.println("I have to pay to you " + taxOwned );
+           System.out.println("Goverment will pay you " + taxOwned + "$");
        }else if (taxOwned > 0){
-           System.out.println("you have to pay me" + taxOwned);
+           System.out.println("You need to pay" + taxOwned + "$ more");
        }
 
 
@@ -78,17 +80,13 @@ private void taxOwnedCalculator(double purchaseAmount) {
     }
 }
 
-    
-    
-    // Method to calculate tax based on income
+
     private double calculateTax(double income) {
-                                     //the variable in the bracket it is using in the curry bracket and it represnt the variable
-                                     // of the user entered. so you dedicating what you gonna do with the variable give you.
-                                     //in this method, "incom" is variable user give you. 
+                                     
         if (income <= 0) {
             return 0;
         } else if (income <= 50000) {
-            return income * 0.2; // 20% tax for income up to 10,000
+            return income * 0.2; 
         } else {
             return income * 0.3;
                     

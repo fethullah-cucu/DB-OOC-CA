@@ -20,7 +20,10 @@ import java.sql.Statement;
  */
 public class DatabaseUpdate extends Database{
     public DatabaseUpdate(int userID ,String COLUMN_NAME,String userValue) throws SQLException{
-    
+        
+        String userIDString = Integer.toString(userID);
+
+
     try (
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
