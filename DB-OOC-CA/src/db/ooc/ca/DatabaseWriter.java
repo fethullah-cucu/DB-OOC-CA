@@ -4,10 +4,8 @@
  */
 package db.ooc.ca;
 
-import static db.ooc.ca.Database.TABLE_NAME;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -23,6 +21,7 @@ public class DatabaseWriter extends Database{
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();  
         ){
+
             System.out.println("addCostumer try worked");
                                                                                                                 //with that way, we are specify the column names with variables.
             String sql = String.format("INSERT INTO " + TABLE_NAME + " (name, phone, gross, taxOwned,password) VALUES ('%s', '%d', '%d', '%f','%s');",
@@ -43,9 +42,10 @@ public class DatabaseWriter extends Database{
             }
             
             System.out.println("add addCostumer finished.");
+
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
             return false;
         }
     }

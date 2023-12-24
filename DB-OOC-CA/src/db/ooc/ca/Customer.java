@@ -16,6 +16,7 @@ public class Customer {
     private int phone;
     private int gross;
     private double taxOwned;
+
     private String customerPassword;
     
     public Customer(String name, int phone, int gross,String customerPassword) {
@@ -26,6 +27,7 @@ public class Customer {
         this.customerPassword = customerPassword;
         
 
+
        
         double purchaseAmount = gross;
 
@@ -35,9 +37,12 @@ public class Customer {
 
         
         double taxAmount = calculateTax(purchaseAmount);
-
+        
+        
        taxOwned = taxOwned - taxAmount; 
-
+       
+       
+       
        
        if (taxOwned<0 ){
            System.out.println("Goverment will pay you " + taxOwned + "$");
@@ -45,19 +50,26 @@ public class Customer {
            System.out.println("You need to pay" + taxOwned + "$ more");
        }
 
-        System.out.println(" customer class (1. constructer) worked.");
+
     }  
     
-    public Customer(int id,String name, int phone, int gross,double taxOwned , String customerPassword) {
-    this.customerID = id;
-    this.name = name;
-    this.phone = phone;
-    this.gross = gross;
-    this.taxOwned = taxOwned;
-    this.customerPassword = customerPassword;
-
+    public Customer(int id,String name, int phone, int gross,double taxOwned) {
+        id = this.customerID;
+        name = this.name;
+        phone = this.phone;
+        gross = this.gross;
+        taxOwned = this.taxOwned;
+                
+            
+    
+    
+    
     }
-
+    
+    
+    
+    
+    
     
     
 private void taxOwnedCalculator(double purchaseAmount) {
@@ -69,7 +81,6 @@ private void taxOwnedCalculator(double purchaseAmount) {
 }
 
 
-    
     private double calculateTax(double income) {
                                      
         if (income <= 0) {
@@ -84,7 +95,6 @@ private void taxOwnedCalculator(double purchaseAmount) {
      
     }
 
-    
     public String getName() {
         return name;
     }
@@ -124,16 +134,6 @@ private void taxOwnedCalculator(double purchaseAmount) {
     public void setTaxOwned(double taxOwned) {
         this.taxOwned = taxOwned;
     }
-
-    public String getCustomerPassword() {
-        return customerPassword;
-    }
-
-    public void setCustomerPassword(String customerPassword) {
-        this.customerPassword = customerPassword;
-    }
-    
-    
     
     
     

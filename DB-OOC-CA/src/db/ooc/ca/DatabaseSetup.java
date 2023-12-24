@@ -42,8 +42,7 @@ public class DatabaseSetup extends Database{
                     + "name VARCHAR(255),"
                     + "phone INT(10),"
                     + "gross INT(10),"
-                    + "taxowned INT(10),"
-                    + "password VARCHAR(50)"
+                    + "taxowned INT(10)"    
                     + ");";
             stmt.execute(sql);
             System.out.println("Table created successfully.");

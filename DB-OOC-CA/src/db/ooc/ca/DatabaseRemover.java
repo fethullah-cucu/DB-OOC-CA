@@ -25,9 +25,9 @@ public class DatabaseRemover extends Database{
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
         ){
-        int results = stmt.executeUpdate(String.format("DELETE FROM %s.%s "
-                + "WHERE id = '%s';",DB_NAME, TABLE_NAME,userID));
-    
+        ResultSet results = stmt.executeQuery(String.format("DELETE * FROM %s "
+                + "WHERE customer_id = " + userID + ";", TABLE_NAME));
+    //I am trying something new
     }
     
     

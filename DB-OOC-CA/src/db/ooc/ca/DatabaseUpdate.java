@@ -19,21 +19,21 @@ import java.sql.Statement;
  * @author canif
  */
 public class DatabaseUpdate extends Database{
-    
-    private static String password;
     public DatabaseUpdate(int userID ,String COLUMN_NAME,String userValue) throws SQLException{
         
         String userIDString = Integer.toString(userID);
+
 
     try (
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
         ) {
-        int results = stmt.executeUpdate(String.format("UPDATE %s.%s "
-                + "SET %s = '%s' "
-                + "WHERE id = '%s';",
-                DB_NAME, TABLE_NAME, COLUMN_NAME, userValue, userIDString));
-
+    
+        ResultSet results = stmt.executeQuery(String.format("SELECT * FROM %s"
+                + "UPDATE SET %s = " + userValue
+                +"WHERE id = " + userID
+                + ";", TABLE_NAME,COLUMN_NAME));
+    
     }
 
     
