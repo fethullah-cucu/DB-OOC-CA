@@ -39,10 +39,15 @@ public class UserType { //class starts.
                     switch(userChoise){
                         case 1: //List all user
                             DatabaseReader databaseReader = new DatabaseReader();
-                            
                             for (Customer customer : databaseReader.getAllData()){
-                                System.out.println(customer);
-                            }
+            System.out.println(customer.getCustomerID() + " - " 
+                    + customer.getName() + " - " 
+                    + customer.getPhone() + " - " 
+                    + customer.getGross() + " - "
+                    +customer.getTaxOwned() + " - "
+                    +customer.getCustomerPassword()
+                                    );  
+            }   
 
                             System.out.println("do you want to get in main menu ? \n1-yes\n 2-no");
                             mainChoice = input.nextInt();
@@ -72,7 +77,7 @@ public class UserType { //class starts.
                         
                             Customer customer = new Customer(name,phone,gross,password);
                         DatabaseWriter databaseWriter = new DatabaseWriter();
-                            databaseWriter.addPatient(customer);
+                            databaseWriter.addCostumer(customer);
                             
                         System.out.println("do you want to get in main menu ? \n1-yes\n 2-no");
                             mainChoice = input.nextInt();
@@ -141,7 +146,7 @@ public class UserType { //class starts.
                 
                         Customer customer = new Customer(name,phone,gross,password);
                             DatabaseWriter databaseWriter = new DatabaseWriter();
-                            databaseWriter.addPatient(customer);
+                            databaseWriter.addCostumer(customer);
                   System.out.println("do you want to get in main menu ? \n1-yes\n 2-no");
                             mainChoice = input.nextInt();
                             if (mainChoice == 1){
@@ -153,14 +158,16 @@ public class UserType { //class starts.
                   break;
                     case 2:// modify user 
                         System.out.println("what is ID of the user");
-                        int userID = input.nextInt();
-                        input.nextLine();
+//                        int userID = input.nextInt();
+//                        input.nextLine();
+//                        
+//                        System.out.println("what is your password? ");
+//                        String userPassword = input.nextLine();
+
                         
-                        System.out.println("what is your password? ");
-                        String userPassword = input.nextLine();
                         
                         
-                        userTypeCheck();
+                        Integer userID = userTypeCheck2();
                         
                         
                         System.out.println("what is the column name you want to change?");
@@ -171,7 +178,6 @@ public class UserType { //class starts.
                         
                         
                         DatabaseUpdate databaseUpdate = new DatabaseUpdate(userID,COLUMN_NAME,userValue);
-                        //databaseUpdate.setPassword(userPassword);
                         System.out.println("user updated");
                         
                         
@@ -198,9 +204,9 @@ public class UserType { //class starts.
               System.out.println("we get an error. pls try again. ");
               System.out.println(e);
           }
-      }
+      }//while loop
 
-    }
+    }//UserType
     
     
     
@@ -243,9 +249,10 @@ public class UserType { //class starts.
             System.out.println("2. if worked");
                 while(!exit2){
                 System.out.println("what is  id ?");
-                
                 int customerIDCheck = input.nextInt();
                 input.nextLine();
+                
+                
                 System.out.println("what is  password?");
                 String customerPasswordCheck = input.nextLine();
                 
@@ -255,14 +262,45 @@ public class UserType { //class starts.
                                 if (customer.getCustomerID() == customerIDCheck && customer.getCustomerPassword() == customerPasswordCheck){
                                     
                                     exit2=true;
+                                    
                                 }else{
                                     System.out.println("password or id is wrong. try again.");
                                 }
                             }
                         }
                 exit2= true;
-                    }
-                } 
+                    }}
+        
+        private boolean exit3 = false;
+        public int userTypeCheck2(){
+        System.out.println("2. constructer worked");
+                while(!exit3){
+                     System.out.println("what is ID of the user");
+                        Integer userID = input.nextInt();
+                        input.nextLine();
+                        
+                        System.out.println("what is your password? ");
+                        String userPassword = input.nextLine();
+                
+                    DatabaseReader databaseReader = new DatabaseReader();
+
+                for (Customer customer : databaseReader.getAllData()){
+                                if (userID.equals(customer.getCustomerID() ) &&  userPassword.equals(customer.getCustomerPassword())){
+                                    System.out.println("id/password correct");
+                                    exit3=true;
+                                    return userID;
+                                }          
+                }
+                if (!exit3) {
+                        System.out.println("password is wrong");
+                        
+                                        }           
+
+                        }
+                exit3= true;
+return 0;
+        }
+
             }
     
     

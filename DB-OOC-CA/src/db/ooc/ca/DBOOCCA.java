@@ -14,16 +14,16 @@ import java.util.Scanner;
 public class DBOOCCA {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
     
-    DatabaseSetup db = new DatabaseSetup();
+    //DatabaseSetup db = new DatabaseSetup();
     
-    DatabaseSetup.databaseSetup();
+    
         
          //Scanner input = new Scanner(System.in);
          //System.out.println("which type of user are you ? \n 1-Admin \n2-Regular");
          //int userChoise = input.nextInt();
 
-        //UserType user = new UserType(userChoise);
-        
+        UserType user = new UserType();
+        user.UserType();
     
     
     }

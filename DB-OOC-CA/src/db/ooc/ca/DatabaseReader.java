@@ -52,20 +52,6 @@ public class DatabaseReader extends Database{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // Return the list of customers
-        
-        for (Customer customer : customerList){
-            System.out.println(customer.getCustomerID() + " - " 
-                    + customer.getName() + " - " 
-                    + customer.getPhone() + " - " 
-                    + customer.getGross() + " - "
-                    +customer.getTaxOwned() + " - "
-                    +customer.getCustomerPassword()
-            );
-            
-            
-        }
         
         
         return customerList; // when we run this mehtod, it will return the list we got from the file. 
