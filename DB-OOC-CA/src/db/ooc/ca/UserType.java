@@ -39,10 +39,15 @@ public class UserType { //class starts.
                     switch(userChoise){
                         case 1: //List all user
                             DatabaseReader databaseReader = new DatabaseReader();
-                            
                             for (Customer customer : databaseReader.getAllData()){
-                                System.out.println(customer);
-                            }
+            System.out.println(customer.getCustomerID() + " - " 
+                    + customer.getName() + " - " 
+                    + customer.getPhone() + " - " 
+                    + customer.getGross() + " - "
+                    +customer.getTaxOwned() + " - "
+                    +customer.getCustomerPassword()
+                                    );  
+            }   
 
                             System.out.println("do you want to get in main menu ? \n1-yes\n 2-no");
                             mainChoice = input.nextInt();
@@ -72,7 +77,7 @@ public class UserType { //class starts.
                         
                             Customer customer = new Customer(name,phone,gross,password);
                         DatabaseWriter databaseWriter = new DatabaseWriter();
-                            databaseWriter.addPatient(customer);
+                            databaseWriter.addCostumer(customer);
                             
                         System.out.println("do you want to get in main menu ? \n1-yes\n 2-no");
                             mainChoice = input.nextInt();
@@ -88,7 +93,7 @@ public class UserType { //class starts.
                         System.out.println("what is ID of the user");
                             int userID = input.nextInt();
                             input.nextLine();
-                        System.out.println("what is the column name you want to change?");
+                        System.out.println("what is the column name you want to change?id , name, phone , gross, password");
                             String COLUMN_NAME = input.nextLine();
                         System.out.println("what is new value of the column ?");
                             String userValue = input.nextLine();
@@ -141,7 +146,7 @@ public class UserType { //class starts.
                 
                         Customer customer = new Customer(name,phone,gross,password);
                             DatabaseWriter databaseWriter = new DatabaseWriter();
-                            databaseWriter.addPatient(customer);
+                            databaseWriter.addCostumer(customer);
                   System.out.println("do you want to get in main menu ? \n1-yes\n 2-no");
                             mainChoice = input.nextInt();
                             if (mainChoice == 1){
@@ -152,15 +157,8 @@ public class UserType { //class starts.
                             }        
                   break;
                     case 2:// modify user 
-                        System.out.println("what is ID of the user");
-                        int userID = input.nextInt();
-                        input.nextLine();
                         
-                        System.out.println("what is your password? ");
-                        String userPassword = input.nextLine();
-                        
-                        
-                        userTypeCheck(userID,userPassword);
+                        Integer userID = userTypeCheck2();
                         
                         
                         System.out.println("what is the column name you want to change?");
@@ -171,7 +169,6 @@ public class UserType { //class starts.
                         
                         
                         DatabaseUpdate databaseUpdate = new DatabaseUpdate(userID,COLUMN_NAME,userValue);
-                        //databaseUpdate.setPassword(userPassword);
                         System.out.println("user updated");
                         
                         
@@ -199,19 +196,16 @@ public class UserType { //class starts.
               System.out.println(e);
           }
       }
-
     }
     
     
     
     public void userTypeCheck(){
-        System.out.println("usertype worked");
-        
-        //userType2 = String.valueOf(userType);
+
         
         boolean exit2= false;
-        String adminName = "";
-        String adminPassword = "";
+        String adminName = "CCT";
+        String adminPassword = "Dublin";
         while(!exit2){
             if ( userType == 1){
                 System.out.println("what is the name of admin account? if you don't know, write 'no' fot go to main menu.");
@@ -240,12 +234,13 @@ public class UserType { //class starts.
         exit2= true;
         if ( userType == 2){
             
-            System.out.println("2. if worked");
+            
                 while(!exit2){
                 System.out.println("what is  id ?");
-                
                 int customerIDCheck = input.nextInt();
                 input.nextLine();
+                
+                
                 System.out.println("what is  password?");
                 String customerPasswordCheck = input.nextLine();
                 
@@ -255,50 +250,45 @@ public class UserType { //class starts.
                                 if (customer.getCustomerID() == customerIDCheck && customer.getCustomerPassword() == customerPasswordCheck){
                                     
                                     exit2=true;
+                                    
                                 }else{
                                     System.out.println("password or id is wrong. try again.");
                                 }
                             }
                         }
                 exit2= true;
-                    }
-                } 
-    private boolean exit3 = false;
-    public void userTypeCheck(int customerIDCheck,String customerPasswordCheck){
-    
-            
-            System.out.println("2. if worked");
+                    }}
+        
+        private boolean exit3 = false;
+        public int userTypeCheck2(){
+        
                 while(!exit3){
-            
+                     System.out.println("what is ID of the user");
+                        Integer userID = input.nextInt();
+                        input.nextLine();
+                        
+                        System.out.println("what is your password? ");
+                        String userPassword = input.nextLine();
                 
                     DatabaseReader databaseReader = new DatabaseReader();
-                    
+
                 for (Customer customer : databaseReader.getAllData()){
-                                if (customer.getCustomerID() == customerIDCheck && customer.getCustomerPassword() == customerPasswordCheck){
-                                    
+                                if (userID.equals(customer.getCustomerID() ) &&  userPassword.equals(customer.getCustomerPassword())){
+                                    System.out.println("id/password correct");
                                     exit3=true;
-                                }else{
-                                    System.out.println("password or id is wrong. try again.");
-                                    System.out.println("wanna go to main menu? if yes, write 'yes'");
-                                        String adminNameCheck = input.nextLine();
-                
-                                    if(adminNameCheck.equals("yes")){
-                                            UserType();
-                                            }else{
-                                        continue;
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                }
-                            }
+                                    return userID;
+                                }          
+                }
+                if (!exit3) {
+                        System.out.println("password is wrong");
+                        
+                                        }           
+
                         }
                 exit3= true;
-                    }
-    
-    
-    
+return 0;
+        }
+
             }
     
     

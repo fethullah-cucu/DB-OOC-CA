@@ -10,17 +10,17 @@ import java.util.Scanner;
 /**
  *
  * @author canif
+ * 
+ * https://github.com/fethullah-cucu/DB-OOC-CA
+ * 
+ * Fethullah Cucu 2022356
+ * Zhi Yan Chong 2022221
+
+ * 
  */
 public class DBOOCCA {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
     
-    //DatabaseSetup db = new DatabaseSetup();
-    
-    
-        
-         //Scanner input = new Scanner(System.in);
-         //System.out.println("which type of user are you ? \n 1-Admin \n2-Regular");
-         //int userChoise = input.nextInt();
 
         UserType user = new UserType();
         user.UserType();

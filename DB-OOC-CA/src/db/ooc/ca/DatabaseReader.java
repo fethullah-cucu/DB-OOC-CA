@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DatabaseReader extends Database{
     
     public ArrayList<Customer> getAllData() {
-        ArrayList<Customer> customerList = new ArrayList<>();
+        ArrayList<Customer> customerList = new ArrayList<>(); // we are creating 
 
         try (
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
@@ -26,34 +26,29 @@ public class DatabaseReader extends Database{
         ) {
             ResultSet results = stmt.executeQuery(String.format("SELECT * FROM %s;", TABLE_NAME));
 
-            // Iterate through the result set and crea
 
-            // Iteratete Customer objects
-            while (results.next()) {
-                int id = results.getInt("id");
-                String name = results.getString("name");
+            //call the costumers from database and assign into variables.
+            while (results.next()) { 
+                int id = results.getInt("id"); 
+                String name = results.getString("name"); 
                 int phone = results.getInt("phone");
                 int gross = results.getInt("gross");
                 int taxOwned = results.getInt("taxowned");
+                String customerPassword = results.getString("password");
+
+                Customer customer = new Customer(id,name,phone,gross,taxOwned,customerPassword); 
+                                                                                            
                 
-                
-                
-                
-                // Assuming Customer has a constructor that takes id and name as parameters
-                Customer customer = new Customer(id,name,phone,gross,taxOwned);
-                
-                // Add the customer to the list
-                customerList.add(customer);
+                // Add the customers into ArrayList
+                customerList.add(customer); // we are adding all of customer objects into a customer object list. 
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         
         
-        return customerList; 
-
+        return customerList; // when we run this mehtod, it will return the list we got from the file. 
     }
 
     

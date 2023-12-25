@@ -32,8 +32,8 @@ public class DatabaseSetup extends Database{
 
                 Statement stmt = conn.createStatement();
             ){
-            System.out.println("try worked.");
             
+            //setup the database
             stmt.execute("CREATE DATABASE IF NOT EXISTS " + DB_NAME + ";");
             stmt.execute("USE " + DB_NAME + ";");
             String sql = 
@@ -42,7 +42,8 @@ public class DatabaseSetup extends Database{
                     + "name VARCHAR(255),"
                     + "phone INT(10),"
                     + "gross INT(10),"
-                    + "taxowned INT(10)"    
+                    + "taxowned INT(10),"
+                    + "password VARCHAR(50)"
                     + ");";
             stmt.execute(sql);
             System.out.println("Table created successfully.");
