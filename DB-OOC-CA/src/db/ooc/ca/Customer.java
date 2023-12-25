@@ -16,50 +16,60 @@ public class Customer {
     private int phone;
     private int gross;
     private double taxOwned;
+
     private String customerPassword;
-    // AUTO SONRASIprivate int currentID = 1;
-        //         customer enter his name,phone,grass income
+    
     public Customer(String name, int phone, int gross,String customerPassword) {
-        // AUTO SONRASI customerID = currentID;
+        
         this.name = name;
         this.phone = phone;
         this.gross = gross;
         this.customerPassword = customerPassword;
-        //AUTO SONRASIcurrentID++; some changes.    
+        
 
-        //you are assign grass income into purchaseAmount. if user enter 70.000$ , gross equal to 70.000 and 
-        //purchaseAmount will equal to 70.000 as well
+
+       
         double purchaseAmount = gross;
 
         
-        //change the ownedTax according to gross income (purchaseAmount)
+        
         taxOwnedCalculator(purchaseAmount);
 
-        // you are calculating how much customer will paid according to his salary and his tax rate.
+        
         double taxAmount = calculateTax(purchaseAmount);
-
+        
+        
        taxOwned = taxOwned - taxAmount; 
-
+       
+       
+       
        
        if (taxOwned<0 ){
-           System.out.println("I have to pay to you " + taxOwned );
+           System.out.println("Goverment will pay you " + taxOwned + "$");
        }else if (taxOwned > 0){
-           System.out.println("you have to pay me" + taxOwned);
+           System.out.println("You need to pay" + taxOwned + "$ more");
        }
 
-        System.out.println(" customer class (1. constructer) worked.");
+
     }  
     
-    public Customer(int id,String name, int phone, int gross,double taxOwned , String customerPassword) {
-    this.customerID = id;
-    this.name = name;
-    this.phone = phone;
-    this.gross = gross;
-    this.taxOwned = taxOwned;
-    this.customerPassword = customerPassword;
-
+    public Customer(int id,String name, int phone, int gross,double taxOwned) {
+        id = this.customerID;
+        name = this.name;
+        phone = this.phone;
+        gross = this.gross;
+        taxOwned = this.taxOwned;
+                
+            
+    
+    
+    
     }
-
+    
+    
+    
+    
+    
     
     
 private void taxOwnedCalculator(double purchaseAmount) {
@@ -71,15 +81,12 @@ private void taxOwnedCalculator(double purchaseAmount) {
 }
 
 
-    // Method to calculate tax based on income
     private double calculateTax(double income) {
-                                     //the variable in the bracket it is using in the curry bracket and it represnt the variable
-                                     // of the user entered. so you dedicating what you gonna do with the variable give you.
-                                     //in this method, "incom" is variable user give you. 
+                                     
         if (income <= 0) {
             return 0;
         } else if (income <= 50000) {
-            return income * 0.2; // 20% tax for income up to 10,000
+            return income * 0.2; 
         } else {
             return income * 0.3;
                     
@@ -88,7 +95,6 @@ private void taxOwnedCalculator(double purchaseAmount) {
      
     }
 
-    
     public String getName() {
         return name;
     }
@@ -128,16 +134,6 @@ private void taxOwnedCalculator(double purchaseAmount) {
     public void setTaxOwned(double taxOwned) {
         this.taxOwned = taxOwned;
     }
-
-    public String getCustomerPassword() {
-        return customerPassword;
-    }
-
-    public void setCustomerPassword(String customerPassword) {
-        this.customerPassword = customerPassword;
-    }
-    
-    
     
     
     

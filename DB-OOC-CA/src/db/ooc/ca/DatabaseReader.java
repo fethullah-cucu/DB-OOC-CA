@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DatabaseReader extends Database{
     
     public ArrayList<Customer> getAllData() {
-        ArrayList<Customer> customerList = new ArrayList<>(); // we are creating 
+        ArrayList<Customer> customerList = new ArrayList<>();
 
         try (
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
@@ -29,46 +29,31 @@ public class DatabaseReader extends Database{
             // Iterate through the result set and crea
 
             // Iteratete Customer objects
-            while (results.next()) { //while : it is a loop. loops stop till conditions (paranteses) return "false". next() method is reading lines from files
-                                                //if there is no "next line" it return false. when it return false, loop stops. 
-                int id = results.getInt("id"); //we are taking id part of the line and assign the value to id variable.
-                String name = results.getString("name"); // same with above comment.
+            while (results.next()) {
+                int id = results.getInt("id");
+                String name = results.getString("name");
                 int phone = results.getInt("phone");
                 int gross = results.getInt("gross");
                 int taxOwned = results.getInt("taxowned");
-                String customerPassword = results.getString("password");
+                
                 
                 
                 
                 // Assuming Customer has a constructor that takes id and name as parameters
-                Customer customer = new Customer(id,name,phone,gross,taxOwned,customerPassword); 
-                                                                                            // we are creating customer object and add the information we got
-                                                                                                            //from file by loop. 
+                Customer customer = new Customer(id,name,phone,gross,taxOwned);
                 
                 // Add the customer to the list
-                customerList.add(customer); // we are adding all of customer objects into a customer object list. 
+                customerList.add(customer);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Return the list of customers
-        
-        for (Customer customer : customerList){
-            System.out.println(customer.getCustomerID() + " - " 
-                    + customer.getName() + " - " 
-                    + customer.getPhone() + " - " 
-                    + customer.getGross() + " - "
-                    +customer.getTaxOwned() + " - "
-                    +customer.getCustomerPassword()
-            );
-            
-            
-        }
         
         
-        return customerList; // when we run this mehtod, it will return the list we got from the file. 
+        return customerList; 
+
     }
 
     
